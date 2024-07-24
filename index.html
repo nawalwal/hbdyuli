@@ -63,6 +63,7 @@
             color: #ff4500;
             font-size: 18px;
             margin-top: 10px;
+            display: none; /* Default is hidden */
         }
         #balloons, #confetti, #stars {
             position: fixed;
@@ -150,7 +151,7 @@
         <p>Masukkan nama untuk melanjutkan:</p>
         <input type="text" id="nameInput" placeholder="Masukkan nama">
         <button onclick="checkName()">Lanjut</button>
-        <p id="errorMessage" class="hidden">Eh salah</p>
+        <p id="errorMessage">Eh salah</p>
     </div>
     <div id="balloons">
         <div class="balloon" style="left: 10%; animation-duration: 12s;"></div>
@@ -188,9 +189,9 @@
                 balloons.style.display = 'block';
                 confetti.style.display = 'block';
                 stars.style.display = 'block';
-                errorMessage.classList.add('hidden');
+                errorMessage.style.display = 'none'; // Hide error message if correct name
             } else {
-                errorMessage.classList.remove('hidden');
+                errorMessage.style.display = 'block'; // Show error message if incorrect name
             }
         }
         
