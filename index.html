@@ -159,6 +159,9 @@
             75% { transform: translate(20px, -20px); }
             100% { transform: translate(-20px, 20px); }
         }
+        #noButton {
+            animation: none;
+        }
         #game button {
             padding: 15px 30px;
             font-size: 18px;
@@ -203,7 +206,7 @@
         <p>Selamat datang di halaman ulang tahun! Masukkan nama kamu untuk melanjutkan:</p>
         <input type="text" id="nameInput" placeholder="Masukkan nama">
         <button onclick="checkName()">Lanjut</button>
-        <p id="errorMessage">Eh salah</p>
+        <p id="errorMessage">Eh salah! Coba lagi.</p>
     </div>
     <div id="game">
         <h2>Permainan Ulang Tahun</h2>
@@ -214,7 +217,7 @@
     </div>
     <div id="options">
         <button onclick="showGreeting()">Mau Lihat Ucapan</button>
-        <button id="noButton" class="moving">Ngga Mau</button>
+        <button id="noButton">Ngga Mau</button>
     </div>
     <div id="greeting">
         <h2>Selamat Ulang Tahun, Bestiku yang Paling Heboh!</h2>
