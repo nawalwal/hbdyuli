@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selamat Ulang Tahun!</title>
+    <!-- Tambahkan link Google Fonts di sini -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <style>
         body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-family: 'Roboto', sans-serif; /* Menggunakan font Roboto */
             background: linear-gradient(135deg, #f0f8ff, #e0ffff);
             color: #333;
             text-align: center;
@@ -182,7 +184,7 @@
 </head>
 <body>
     <div id="curtain">Selamat Ulang Tahun!</div>
-    <h1></h1>
+    <h1>Selamat Datang!</h1>
     <div id="login">
         <p>Masukkan nama untuk melanjutkan:</p>
         <input type="text" id="nameInput" placeholder="Masukkan nama">
@@ -190,7 +192,7 @@
         <p id="errorMessage" class="hidden">Eh salah</p>
     </div>
     <div id="options" class="hidden">
-        <p> Mau lihat ucapan ulang tahun ga?</p>
+        <p>Nama benar! Mau lihat ucapan ulang tahun ga?</p>
         <div class="options">
             <button class="show" onclick="showGreeting()">Ya</button>
             <button class="hide" id="noButton" onclick="moveButton()">Tidak</button>
@@ -215,18 +217,14 @@
         <div class="balloon" style="left: 30%; animation-duration: 15s;"></div>
         <div class="balloon" style="left: 50%; animation-duration: 10s;"></div>
         <div class="balloon" style="left: 70%; animation-duration: 13s;"></div>
-        <div class="balloon" style="left: 90%; animation-duration: 14s;"></div>
+        <div class="balloon" style="left: 90%; animation-duration: 12s;"></div>
     </div>
     <div id="confetti">
-        <div class="confetti" style="left: 10%; animation-duration: 4s;"></div>
-        <div class="confetti" style="left: 20%; animation-duration: 5s;"></div>
+        <div class="confetti" style="left: 10%; animation-duration: 5s;"></div>
         <div class="confetti" style="left: 30%; animation-duration: 6s;"></div>
-        <div class="confetti" style="left: 40%; animation-duration: 7s;"></div>
-        <div class="confetti" style="left: 50%; animation-duration: 8s;"></div>
-        <div class="confetti" style="left: 60%; animation-duration: 9s;"></div>
-        <div class="confetti" style="left: 70%; animation-duration: 10s;"></div>
-        <div class="confetti" style="left: 80%; animation-duration: 11s;"></div>
-        <div class="confetti" style="left: 90%; animation-duration: 12s;"></div>
+        <div class="confetti" style="left: 50%; animation-duration: 7s;"></div>
+        <div class="confetti" style="left: 70%; animation-duration: 8s;"></div>
+        <div class="confetti" style="left: 90%; animation-duration: 9s;"></div>
     </div>
     <script>
         function checkName() {
