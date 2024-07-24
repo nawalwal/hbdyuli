@@ -23,7 +23,6 @@
             margin-bottom: 20px;
         }
         #login {
-            z-index: 100;
             background: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 15px;
@@ -97,15 +96,9 @@
             transform: translateX(-50%);
         }
         @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-300px) rotate(15deg);
-            }
-            100% {
-                transform: translateY(0) rotate(-15deg);
-            }
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-300px) rotate(15deg); }
+            100% { transform: translateY(0) rotate(-15deg); }
         }
         #confetti {
             position: fixed;
@@ -127,12 +120,8 @@
             animation: confettiFall 3s infinite;
         }
         @keyframes confettiFall {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-            }
+            0% { transform: translateY(-100px) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
         }
         #fireworks {
             position: fixed;
@@ -153,18 +142,9 @@
             animation: firework 1.5s infinite;
         }
         @keyframes firework {
-            0% {
-                transform: scale(0) translateY(0);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1) translateY(-150px);
-                opacity: 0.5;
-            }
-            100% {
-                transform: scale(0) translateY(-300px);
-                opacity: 0;
-            }
+            0% { transform: scale(0) translateY(0); opacity: 1; }
+            50% { transform: scale(1) translateY(-150px); opacity: 0.5; }
+            100% { transform: scale(0) translateY(-300px); opacity: 0; }
         }
         #options {
             display: none;
@@ -200,7 +180,7 @@
         #greeting {
             display: none;
             margin-top: 20px;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -208,46 +188,20 @@
         #game {
             display: none;
             margin-top: 20px;
-        }
-        #game input {
-            padding: 10px;
-            font-size: 16px;
-            border: 2px solid #ff6f61;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin-bottom: 10px;
-        }
-        #game button {
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            background-color: #32cd32;
-            color: white;
-            font-weight: bold;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        #game button:hover {
-            background-color: #228b22;
-            transform: scale(1.05);
-        }
-        #gameMessage {
-            font-weight: bold;
-            margin-top: 10px;
-            color: #ff4500;
-            display: none;
         }
     </style>
 </head>
 <body>
     <div id="balloons">
-        <div class="balloon" style="left: 10%; animation-duration: 12s;"></div>
-        <div class="balloon" style="left: 30%; animation-duration: 15s;"></div>
-        <div class="balloon" style="left: 50%; animation-duration: 10s;"></div>
-        <div class="balloon" style="left: 70%; animation-duration: 13s;"></div>
-        <div class="balloon" style="left: 90%; animation-duration: 12s;"></div>
+        <div class="balloon" style="left: 10%; animation-duration: 10s;"></div>
+        <div class="balloon" style="left: 30%; animation-duration: 12s;"></div>
+        <div class="balloon" style="left: 50%; animation-duration: 14s;"></div>
+        <div class="balloon" style="left: 70%; animation-duration: 16s;"></div>
+        <div class="balloon" style="left: 90%; animation-duration: 18s;"></div>
     </div>
     <div id="confetti">
         <div class="confetti" style="left: 10%; animation-duration: 5s;"></div>
@@ -263,7 +217,7 @@
     </div>
     <div id="login">
         <h1>Masukkan Nama</h1>
-        <p> Masukkan nama kamu untuk melanjutkan:</p>
+        <p>Selamat datang di halaman ulang tahun! Masukkan nama kamu untuk melanjutkan:</p>
         <input type="text" id="nameInput" placeholder="Masukkan nama">
         <button onclick="checkName()">Lanjut</button>
         <p id="errorMessage">Eh salah</p>
@@ -297,15 +251,15 @@
             const game = document.getElementById('game');
 
             if (inputName === correctName) {
-                login.classList.add('hidden');
-                options.classList.remove('hidden');
-                errorMessage.classList.add('hidden');
+                login.style.display = 'none';
+                options.style.display = 'block';
+                errorMessage.style.display = 'none';
                 balloons.style.display = 'block';
                 confetti.style.display = 'block';
                 fireworks.style.display = 'block';
-                game.classList.remove('hidden');
+                game.style.display = 'block';
             } else {
-                errorMessage.classList.remove('hidden');
+                errorMessage.style.display = 'block';
             }
         }
 
