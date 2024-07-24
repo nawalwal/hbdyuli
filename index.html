@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #ffde59, #ff6f61);
+            background: linear-gradient(135deg, #ff77b2, #ff1493); /* Warna pink */
             color: #333;
             text-align: center;
             padding: 50px;
@@ -22,15 +22,17 @@
             font-size: 3em;
             margin-bottom: 20px;
         }
-        #login {
+        #login, #game, #options, #greeting {
             background: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            display: inline-block;
-            position: relative;
+            display: none;
         }
-        #login input {
+        #login {
+            display: block;
+        }
+        #login input, #game input {
             padding: 15px;
             font-size: 18px;
             border: 2px solid #ff6f61;
@@ -39,12 +41,12 @@
             transition: box-shadow 0.3s, border-color 0.3s;
             margin-bottom: 10px;
         }
-        #login input:focus {
+        #login input:focus, #game input:focus {
             outline: none;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
             border-color: #ff4500;
         }
-        #login button {
+        #login button, #options button {
             padding: 15px 30px;
             font-size: 18px;
             border: none;
@@ -55,8 +57,9 @@
             font-weight: bold;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             transition: background-color 0.3s, transform 0.3s;
+            margin: 10px;
         }
-        #login button:hover {
+        #login button:hover, #options button:hover {
             background-color: #228b22;
             transform: scale(1.05);
         }
@@ -146,11 +149,17 @@
             50% { transform: scale(1) translateY(-150px); opacity: 0.5; }
             100% { transform: scale(0) translateY(-300px); opacity: 0; }
         }
-        #options {
-            display: none;
-            margin-top: 20px;
+        #noButton.moving {
+            animation: moveButton 5s infinite;
         }
-        #options button {
+        @keyframes moveButton {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(20px, 20px); }
+            50% { transform: translate(-20px, -20px); }
+            75% { transform: translate(20px, -20px); }
+            100% { transform: translate(-20px, 20px); }
+        }
+        #game button {
             padding: 15px 30px;
             font-size: 18px;
             border: none;
@@ -163,35 +172,9 @@
             transition: background-color 0.3s, transform 0.3s;
             margin: 10px;
         }
-        #options button:hover {
+        #game button:hover {
             background-color: #ff4500;
             transform: scale(1.05);
-        }
-        #noButton.moving {
-            animation: moveButton 5s infinite;
-        }
-        @keyframes moveButton {
-            0% { transform: translate(0, 0); }
-            25% { transform: translate(20px, 20px); }
-            50% { transform: translate(-20px, -20px); }
-            75% { transform: translate(20px, -20px); }
-            100% { transform: translate(-20px, 20px); }
-        }
-        #greeting {
-            display: none;
-            margin-top: 20px;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-        #game {
-            display: none;
-            margin-top: 20px;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
@@ -222,6 +205,13 @@
         <button onclick="checkName()">Lanjut</button>
         <p id="errorMessage">Eh salah</p>
     </div>
+    <div id="game">
+        <h2>Permainan Ulang Tahun</h2>
+        <p>Selamat datang di permainan kecil! Coba tebak angka antara 1 dan 10:</p>
+        <input type="number" id="guessInput" min="1" max="25" placeholder="Masukkan angka">
+        <button onclick="checkGuess()">Kirim</button>
+        <p id="gameMessage"></p>
+    </div>
     <div id="options">
         <button onclick="showGreeting()">Mau Lihat Ucapan</button>
         <button id="noButton" class="moving">Ngga Mau</button>
@@ -231,33 +221,24 @@
         <p>Hey bestot! Hari ini kamu tambah tua, eh maksudnya tambah dewasa!. Selamat ulang tahun, Queen of Drama! Semoga kamu tetap jadi ratu heboh yang bikin hidup aing seru dan nggak pernah bosen. Jangan lupa, traktiran wajib ya! 🥳🍕</p>
         <p>Di hari spesialmu ini, aku ingin mengucapkan terima kasih karena telah menjadi sahabat yang luar biasa. Antum selalu ada di saat suka dan duka, membuat setiap hari lebih berwarna. Semoga di ulang tahun ini, semua impian dan harapanmu terwujud. Terima kasih karena selalu mendengarkan ceritaku, memberiku semangat, dan jadi sahabat yang nggak tergantikan.</p>
     </div>
-    <div id="game">
-        <h2>Permainan Ulang Tahun</h2>
-        <p>Selamat datang di permainan kecil! Coba tebak angka antara 1 dan 10:</p>
-        <input type="number" id="guessInput" min="1" max="10" placeholder="Masukkan angka">
-        <button onclick="checkGuess()">Kirim</button>
-        <p id="gameMessage"></p>
-    </div>
     <script>
         function checkName() {
             const inputName = document.getElementById('nameInput').value;
             const correctName = 'Yuliyani Safitri';
             const errorMessage = document.getElementById('errorMessage');
             const login = document.getElementById('login');
+            const game = document.getElementById('game');
             const options = document.getElementById('options');
             const balloons = document.getElementById('balloons');
             const confetti = document.getElementById('confetti');
             const fireworks = document.getElementById('fireworks');
-            const game = document.getElementById('game');
 
             if (inputName === correctName) {
                 login.style.display = 'none';
-                options.style.display = 'block';
-                errorMessage.style.display = 'none';
+                game.style.display = 'block';
                 balloons.style.display = 'block';
                 confetti.style.display = 'block';
                 fireworks.style.display = 'block';
-                game.style.display = 'block';
             } else {
                 errorMessage.style.display = 'block';
             }
@@ -265,6 +246,8 @@
 
         function showGreeting() {
             const greeting = document.getElementById('greeting');
+            const options = document.getElementById('options');
+            options.style.display = 'none';
             greeting.style.display = 'block';
         }
 
@@ -276,6 +259,11 @@
             if (guess == correctAnswer) {
                 gameMessage.textContent = 'Selamat! Tebakanmu benar!';
                 gameMessage.style.color = '#32cd32';
+                setTimeout(() => {
+                    const options = document.getElementById('options');
+                    options.style.display = 'block';
+                    document.getElementById('game').style.display = 'none';
+                }, 1000);
             } else {
                 gameMessage.textContent = 'Maaf, tebakanmu salah. Coba lagi!';
                 gameMessage.style.color = '#ff4500';
