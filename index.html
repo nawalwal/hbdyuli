@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selamat Ulang Tahun!</title>
-    <!-- Tambahkan link Google Fonts di sini -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <style>
         body {
-            font-family: 'Roboto', sans-serif; /* Menggunakan font Roboto */
+            font-family: 'Roboto', sans-serif;
             background: linear-gradient(135deg, #f0f8ff, #e0ffff);
             color: #333;
             text-align: center;
@@ -20,10 +19,6 @@
         h1 {
             color: #ff4500;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        p {
-            font-size: 18px;
-            line-height: 1.6;
         }
         .hidden {
             display: none;
@@ -55,11 +50,6 @@
         .hide:hover {
             background-color: #ff6347;
             transform: scale(1.05);
-        }
-        .moving {
-            position: absolute;
-            top: 0;
-            left: 0;
         }
         #balloons {
             position: fixed;
@@ -180,6 +170,29 @@
             background-color: #4169e1;
             transform: scale(1.05);
         }
+        #game {
+            display: none;
+            margin-top: 20px;
+        }
+        #game input {
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 8px;
+            border: 2px solid #ccc;
+        }
+        #game button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 8px;
+            border: none;
+            background-color: #32cd32;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #game button:hover {
+            background-color: #228b22;
+        }
     </style>
 </head>
 <body>
@@ -192,7 +205,7 @@
         <p id="errorMessage" class="hidden">Eh salah</p>
     </div>
     <div id="options" class="hidden">
-        <p> Mau lihat ucapan ulang tahun ga?</p>
+        <p>Nama benar! Mau lihat ucapan ulang tahun ga?</p>
         <div class="options">
             <button class="show" onclick="showGreeting()">Ya</button>
             <button class="hide" id="noButton" onclick="moveButton()">Tidak</button>
@@ -226,6 +239,13 @@
         <div class="confetti" style="left: 70%; animation-duration: 8s;"></div>
         <div class="confetti" style="left: 90%; animation-duration: 9s;"></div>
     </div>
+    <div id="game" class="hidden">
+        <h2>Game Tebak Kata</h2>
+        <p>Coba tebak kata ulang tahun yang benar:</p>
+        <input type="text" id="guessInput" placeholder="Masukkan jawaban">
+        <button onclick="checkGuess()">Tebak</button>
+        <p id="gameMessage" class="hidden"></p>
+    </div>
     <script>
         function checkName() {
             const inputName = document.getElementById('nameInput').value;
@@ -235,6 +255,7 @@
             const options = document.getElementById('options');
             const balloons = document.getElementById('balloons');
             const confetti = document.getElementById('confetti');
+            const game = document.getElementById('game');
 
             if (inputName === correctName) {
                 login.classList.add('hidden');
@@ -242,6 +263,7 @@
                 errorMessage.classList.add('hidden');
                 balloons.style.display = 'block';
                 confetti.style.display = 'block';
+                game.classList.remove('hidden'); // Menampilkan game tebak kata
             } else {
                 errorMessage.classList.remove('hidden');
             }
@@ -263,6 +285,21 @@
                 requestAnimationFrame(move);
             };
             move();
+        }
+
+        function checkGuess() {
+            const guess = document.getElementById('guessInput').value.toLowerCase();
+            const correctWord = 'birthday';
+            const gameMessage = document.getElementById('gameMessage');
+            if (guess === correctWord) {
+                gameMessage.textContent = 'Selamat! Jawaban benar!';
+                gameMessage.classList.remove('hidden');
+                document.getElementById('greeting').classList.remove('hidden');
+                document.getElementById('game').classList.add('hidden');
+            } else {
+                gameMessage.textContent = 'Coba lagi!';
+                gameMessage.classList.remove('hidden');
+            }
         }
 
         window.onload = function() {
