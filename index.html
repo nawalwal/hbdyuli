@@ -27,28 +27,32 @@
             display: none;
         }
         .options button {
-            padding: 10px 20px;
-            font-size: 16px;
+            padding: 15px 30px;
+            font-size: 18px;
             margin: 10px;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
         .show {
             background-color: #32cd32;
             color: white;
+            font-weight: bold;
         }
         .show:hover {
             background-color: #228b22;
+            transform: scale(1.05);
         }
         .hide {
             background-color: #ff4500;
             color: white;
-            position: relative;
+            font-weight: bold;
         }
         .hide:hover {
             background-color: #ff6347;
+            transform: scale(1.05);
         }
         .moving {
             position: absolute;
@@ -142,6 +146,22 @@
         #curtain.hidden {
             transform: translateY(-100%);
         }
+        #login button {
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            background-color: #4682b4;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        #login button:hover {
+            background-color: #4169e1;
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -150,7 +170,7 @@
     <div id="login">
         <p>Masukkan nama untuk melanjutkan:</p>
         <input type="text" id="nameInput" placeholder="Masukkan nama">
-        <button onclick="checkName()">Submit</button>
+        <button onclick="checkName()">Lanjut</button>
         <p id="errorMessage" class="hidden">Eh salah</p>
     </div>
     <div id="options" class="hidden">
@@ -161,18 +181,17 @@
         </div>
     </div>
     <div id="greeting" class="hidden">
-        <h2>Selamat Ulang Tahun, Bestiku yang Paling Heboh!</h2>
+        <h2>Selamat Ulang Tahun, Yuliyani Safitri!</h2>
         <p>
-            Hey bestot! Hari ini kamu tambah tua, eh maksudnya tambah dewasa!. 
-            Selamat ulang tahun, Queen of Drama! Semoga kamu tetap jadi ratu heboh yang bikin hidup aing seru dan nggak pernah bosen. 
-            jangan lupa, traktiran wajib ya! 🥳🍕
-.
-        </p>
-        <p>
+            Selamat Ulang Tahun, Bestiku yang Paling Heboh!
+            <br><br>
+            Hey bestot! Hari ini kamu tambah tua, eh maksudnya tambah dewasa!. Selamat ulang tahun, Queen of Drama! 
+            Semoga kamu tetap jadi ratu heboh yang bikin hidup aing seru dan nggak pernah bosen. Jangan lupa, traktiran wajib ya! 🥳🍕
+            <br><br>
             Di hari spesialmu ini, aku ingin mengucapkan terima kasih karena telah menjadi sahabat yang luar biasa. 
-            antum selalu ada di saat suka dan duka, membuat setiap hari lebih berwarna. 
-            Semoga di ulang tahun ini, semua impian dan harapanmu terwujud. 
-            Terima kasih karena selalu mendengarkan ceritaku, memberiku semangat, dan jadi sahabat yang nggak tergantikan.
+            Kamu selalu ada di saat suka dan duka, membuat setiap hari lebih berwarna. Semoga di ulang tahun ini, 
+            semua impian dan harapanmu terwujud. Terima kasih karena selalu mendengarkan ceritaku, memberiku semangat, 
+            dan jadi sahabat yang nggak tergantikan.
         </p>
     </div>
     <div id="balloons">
@@ -204,6 +223,7 @@
             const confetti = document.getElementById('confetti');
 
             if (inputName === correctName) {
+                login.class
                 login.classList.add('hidden');
                 options.classList.remove('hidden');
                 errorMessage.classList.add('hidden');
@@ -240,3 +260,4 @@
     </script>
 </body>
 </html>
+
