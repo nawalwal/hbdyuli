@@ -74,7 +74,7 @@
             bottom: -100px;
             width: 60px;
             height: 80px;
-            background-image: url('https://img.icons8.com/ios/50/000000/ball.png'); /* Gambar balon */
+            background-image: url('https://img.icons8.com/ios/50/000000/ball.png');
             background-size: cover;
             animation: float 10s infinite;
         }
@@ -146,6 +146,22 @@
         #curtain.hidden {
             transform: translateY(-100%);
         }
+        #login {
+            z-index: 100;
+        }
+        #login input {
+            padding: 15px;
+            font-size: 18px;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: box-shadow 0.3s;
+            margin-bottom: 10px;
+        }
+        #login input:focus {
+            outline: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
         #login button {
             padding: 15px 30px;
             font-size: 18px;
@@ -166,7 +182,7 @@
 </head>
 <body>
     <div id="curtain">Selamat Ulang Tahun!</div>
-    <h1>Selamat Datang!</h1>
+    <h1></h1>
     <div id="login">
         <p>Masukkan nama untuk melanjutkan:</p>
         <input type="text" id="nameInput" placeholder="Masukkan nama">
@@ -174,7 +190,7 @@
         <p id="errorMessage" class="hidden">Eh salah</p>
     </div>
     <div id="options" class="hidden">
-        <p>Mau lihat ucapan ulang tahun ga?</p>
+        <p> Mau lihat ucapan ulang tahun ga?</p>
         <div class="options">
             <button class="show" onclick="showGreeting()">Ya</button>
             <button class="hide" id="noButton" onclick="moveButton()">Tidak</button>
@@ -223,7 +239,6 @@
             const confetti = document.getElementById('confetti');
 
             if (inputName === correctName) {
-                login.class
                 login.classList.add('hidden');
                 options.classList.remove('hidden');
                 errorMessage.classList.add('hidden');
@@ -260,4 +275,3 @@
     </script>
 </body>
 </html>
-
