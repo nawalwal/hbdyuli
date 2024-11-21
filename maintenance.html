@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maintenance Mode</title>
+  <style>
+    /* Reset margin & padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #141414;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+      padding: 0 20px;
+    }
+
+    /* Background Animation */
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, #ff6a00, #ee0979);
+      background-size: 400% 400%;
+      animation: gradientAnim 10s ease infinite;
+      filter: blur(10px);
+      z-index: -1;
+    }
+
+    /* Gradient Animation */
+    @keyframes gradientAnim {
+      0% {
+        background-position: 0 0;
+      }
+      50% {
+        background-position: 400% 400%;
+      }
+      100% {
+        background-position: 0 0;
+      }
+    }
+
+    /* Main Container Styling */
+    .container {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 50px 60px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Text Animations */
+    h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      animation: fadeInText 2s ease-out, glow 1.5s alternate infinite;
+    }
+
+    p {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      color: #ddd;
+      animation: fadeInText 3s ease-out;
+    }
+
+    .icon {
+      font-size: 6rem;
+      margin-bottom: 30px;
+      color: #fff;
+      animation: bounce 2s infinite ease-in-out;
+    }
+
+    .contact {
+      font-size: 1.2rem;
+      color: #ddd;
+      margin-top: 20px;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .contact:hover {
+      color: #ff6a00;
+    }
+
+    /* Animations */
+    @keyframes fadeInText {
+      0% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 10px #ff6a00, 0 0 20px #ff6a00, 0 0 30px #ff6a00;
+      }
+      100% {
+        text-shadow: 0 0 20px #ff6a00, 0 0 30px #ff6a00, 0 0 40px #ff6a00;
+      }
+    }
+
+    /* Media Queries for smaller screens (mobile) */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem; /* Make the heading smaller on smaller screens */
+      }
+      .container {
+        padding: 30px 40px; /* Adjust padding for smaller screens */
+      }
+      .icon {
+        font-size: 4rem; /* Reduce icon size for mobile */
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem; /* Make the heading even smaller on very small screens */
+      }
+      .container {
+        padding: 20px 30px; /* Reduce padding on very small screens */
+      }
+      .icon {
+        font-size: 3rem; /* Further reduce icon size on very small screens */
+      }
+      p {
+        font-size: 1.2rem; /* Reduce paragraph font size on small devices */
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="background"></div>
+  <div class="container">
+    <div class="icon">🚧</div>
+    <h1>Under Maintenance</h1>
+    <p>We are currently updating our site. Please check back soon!</p>
+    <a href="mailto:support@example.com" class="contact">Need help? Contact rizanawal24@gmail.com</a>
+  </div>
+</body>
+</html>
