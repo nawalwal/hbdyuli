@@ -14,16 +14,16 @@
 
     body {
       font-family: 'Arial', sans-serif;
-      background: radial-gradient(circle, #0f2027, #203a43, #2c5364);
+      background: radial-gradient(circle at center, #1e293b, #111827);
       color: #fff;
-      overflow: hidden;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
     }
 
-    /* Background Animation */
+    /* Animated Background */
     .background {
       position: absolute;
       top: 0;
@@ -34,42 +34,25 @@
       z-index: -1;
     }
 
-    .star {
-      position: absolute;
-      width: 3px;
-      height: 3px;
-      background: rgba(255, 255, 255, 0.7);
-      border-radius: 50%;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-      animation: twinkle 5s infinite;
-    }
-
-    @keyframes twinkle {
-      0%, 100% {
-        opacity: 0.8;
-      }
-      50% {
-        opacity: 0.2;
-      }
-    }
-
-    .star:nth-child(odd) {
-      animation-duration: 7s;
-    }
-
-    /* Glowing Nebula */
-    .nebula {
+    .wave {
       position: absolute;
       width: 200%;
       height: 200%;
       top: -50%;
       left: -50%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+      background: conic-gradient(
+        from 0deg,
+        #00d4ff,
+        #00ffcc,
+        #ff6bd6,
+        #0078ff,
+        #00d4ff
+      );
       filter: blur(150px);
-      animation: spinNebula 12s infinite linear;
+      animation: rotate 10s infinite linear;
     }
 
-    @keyframes spinNebula {
+    @keyframes rotate {
       0% {
         transform: rotate(0deg);
       }
@@ -78,32 +61,59 @@
       }
     }
 
-    /* Particle Explosion */
-    .particles {
+    /* Shooting Stars */
+    .shooting-star {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 200px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), transparent);
+      opacity: 0;
+      animation: shoot 3s linear infinite;
     }
 
-    .particle {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background: linear-gradient(45deg, #ff00ff, #00ffff);
-      border-radius: 50%;
-      animation: moveParticle 4s infinite ease-in-out;
+    .shooting-star:nth-child(2) {
+      animation-delay: 1s;
     }
 
-    @keyframes moveParticle {
+    .shooting-star:nth-child(3) {
+      animation-delay: 2s;
+    }
+
+    @keyframes shoot {
       0% {
-        transform: translate(0, 0) scale(1);
+        transform: translate(-200px, -200px);
+        opacity: 0;
+      }
+      50% {
         opacity: 1;
       }
       100% {
-        transform: translate(calc(300px - 600px * var(--x)), calc(300px - 600px * var(--y))) scale(0.5);
+        transform: translate(600px, 600px);
         opacity: 0;
+      }
+    }
+
+    /* Floating Glow */
+    .glow {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      top: calc(50% - 200px);
+      left: calc(50% - 200px);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+      filter: blur(100px);
+      animation: pulse 5s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.2);
       }
     }
 
@@ -111,10 +121,10 @@
     .container {
       text-align: center;
       z-index: 1;
-      background: rgba(0, 0, 0, 0.8);
       padding: 30px;
+      background: rgba(0, 0, 0, 0.5);
       border-radius: 15px;
-      box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+      box-shadow: 0 0 50px rgba(0, 255, 255, 0.3);
       animation: fadeIn 2s ease-out;
     }
 
@@ -130,34 +140,33 @@
     }
 
     .icon {
-      font-size: 6rem;
-      color: #00ffff;
-      text-shadow: 0 0 15px #00ffff, 0 0 40px #00ffff;
+      font-size: 5rem;
+      color: #00d4ff;
+      text-shadow: 0 0 20px #00ffff, 0 0 40px #00d4ff;
       animation: glow 2s infinite alternate;
     }
 
     @keyframes glow {
       0% {
-        text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+        text-shadow: 0 0 20px #00d4ff, 0 0 40px #00d4ff;
       }
       100% {
-        text-shadow: 0 0 20px #00ffff, 0 0 60px #00ffff;
+        text-shadow: 0 0 30px #00ffff, 0 0 60px #00ffff;
       }
     }
 
     h1 {
-      font-size: 3.5rem;
-      text-transform: uppercase;
-      color: #ffffff;
-      letter-spacing: 3px;
+      font-size: 4rem;
       margin: 20px 0;
+      letter-spacing: 5px;
+      text-transform: uppercase;
       text-shadow: 0 0 10px #ffffff, 0 0 30px #00ffff;
     }
 
     p {
-      font-size: 1.3rem;
-      color: #d8d8d8;
+      font-size: 1.5rem;
       line-height: 1.8;
+      color: #d8d8d8;
     }
 
     /* Responsive Design */
@@ -166,7 +175,7 @@
         font-size: 2.5rem;
       }
       p {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
       }
     }
 
@@ -182,27 +191,16 @@
 </head>
 <body>
   <div class="background">
-    <div class="nebula"></div>
-    <!-- Stars -->
-    <div class="star" style="top: 10%; left: 15%;"></div>
-    <div class="star" style="top: 30%; left: 50%;"></div>
-    <div class="star" style="top: 70%; left: 80%;"></div>
-    <div class="star" style="top: 50%; left: 10%;"></div>
-    <div class="star" style="top: 85%; left: 45%;"></div>
+    <div class="wave"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
   </div>
-  <div class="particles">
-    <div class="particle" style="--x: 0.2; --y: 0.8;"></div>
-    <div class="particle" style="--x: 0.6; --y: 0.2;"></div>
-    <div class="particle" style="--x: 0.8; --y: 0.5;"></div>
-    <div class="particle" style="--x: 0.3; --y: 0.7;"></div>
-  </div>
+  <div class="glow"></div>
   <div class="container">
-    <div class="icon">⚙️</div>
-    <h1>Maintenance Mode</h1>
-    <p>
-      We're crafting something extraordinary.<br>
-      Stay tuned for the cosmic upgrade. 🌌
-    </p>
+    <div class="icon">🚧</div>
+    <h1>Under Maintenance</h1>
+    <p>We’re building something extraordinary. Be ready for the future! 🌌✨</p>
   </div>
 </body>
 </html>
